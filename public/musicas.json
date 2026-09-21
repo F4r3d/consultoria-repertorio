@@ -1,0 +1,39 @@
+ [
+  {
+    "id": "AbCd123",
+    "titulo": "Abstinência",
+    "autor": "George Pagassini",
+    "url": "https://res.cloudinary.com/darvycj5w/video/upload/v1761655320/abstinencia_u9xmxl.mp3",
+    "letra": "/txt/abstinencia.txt",
+    "estilo": "rock",
+    "tema": "Celebra a liberdade e a vida presente, em desapego de quaisquer vícios e dependências"
+  },
+  {
+    "id": "EfGh456",
+    "titulo": "Toco minha lira enquanto Roma arde",
+    "autor": "George Pagassini",
+    "url": "https://res.cloudinary.com/darvycj5w/video/upload/v1761832606/tocominhalira_j03lts.mp3",
+    "letra": "/txt/tocominhalira.txt",
+    "estilo": "rock",
+    "tema": "Aponta o caos social e celebra a arte como resiliência"
+  },
+   {
+    "id": "OfGh456",
+    "titulo": "Outro momento",
+    "autor": "George Pagassini",
+    "url": "https://res.cloudinary.com/darvycj5w/video/upload/v1761832607/outromomento_nglxqh.mp3",
+    "letra": "/txt/outromomento.txt",
+    "estilo": "pop",
+    "tema": "Exalta a importância de um encontro transformador e a decisão de realizar o momento"
+  },
+   {
+    "id": "EfVc456",
+    "titulo": "Essa é pra você",
+    "autor": "George Pagassini",
+    "url": "https://res.cloudinary.com/darvycj5w/video/upload/v1761832606/essaepravoce_fzumyd.mp3",
+    "letra": "/txt/essaepravoce.txt",
+    "estilo": "mpb",
+    "tema": "Balada melancólica dedicada à saudade de um amor distante"
+  }
+
+]
