@@ -110,7 +110,7 @@ function ItemMusica({ id, titulo, autor, autores, url, mp3, letra, estilo, estil
 
   return (
     <div className="bg-slate-950 border-b border-slate-600 hover:bg-slate-900/50 transition-colors px-3 py-2.5">
-      <div className="grid grid-cols-[80px_250px_minmax(100px,180px)_120px_1fr] items-center gap-3">
+      <div className="grid grid-cols-[80px_250px_minmax(100px,180px)_140px_1fr] items-center gap-3">
 
         {/* Coluna 1: Estilo */}
         <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 ring-1 ring-amber-400/30 px-2.5 py-0.5 rounded-full text-center truncate">

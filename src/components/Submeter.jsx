@@ -14,7 +14,20 @@ import {
   Type
 } from 'lucide-react';
 
-const ESTILOS_DISPONIVEIS = ['Rock', 'MPB', 'Pop', 'Samba', 'Bossa Nova', 'Rap', 'Reggae', 'Indie', 'Outro'];
+const ESTILOS_DISPONIVEIS = [
+  'Rock',
+  'MPB',
+  'Pop',
+  'Samba',
+  'Bossa Nova',
+  'Infantil',
+  'Rap',
+  'Reggae',
+  'Forró',
+  'Brega',
+  'Sertanejo',
+  'Romântica',
+  'Outro'];
 
 export default function Submeter() {
   const [titulo, setTitulo] = useState('');
@@ -35,12 +48,13 @@ export default function Submeter() {
   const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET || 'SEU_UPLOAD_PRESET';
 
   const handleEstiloChange = (estilo) => {
-    if (estilos.includes(estilo)) {
-      setEstilos(estilos.filter((e) => e !== estilo));
-    } else {
-      setEstilos([...estilos, estilo]);
-    }
-  };
+  if (estilos.includes(estilo)) {
+    setEstilos(estilos.filter((e) => e !== estilo));
+  } else {
+    if (estilos.length >= 2) return; // já tem 2, não deixa adicionar mais
+    setEstilos([...estilos, estilo]);
+  }
+};
 
   const gerarNomeArquivo = (str) => {
     return str
@@ -189,7 +203,7 @@ export default function Submeter() {
         {/* Estilos (Checkboxes) */}
         <div>
           <label className="flex items-center gap-2 text-sm font-medium text-slate-300 mb-2">
-            <Tag className="w-4 h-4 text-amber-400" /> Estilo(s)
+            <Tag className="w-4 h-4 text-amber-400" /> Estilo(s) (máximo 2) 
           </label>
           <div className="flex flex-wrap gap-2 bg-slate-800/50 p-3 rounded-lg border border-slate-700/50">
             {ESTILOS_DISPONIVEIS.map((estilo) => {
@@ -273,7 +287,7 @@ export default function Submeter() {
             </div>
           ) : (
             <>
-              <UploadCloud className="w-5 h-5" /> Enviar Mídias e Gerar JSON
+              <UploadCloud className="w-5 h-5" /> Enviar para Análise
             </>
           )}
         </button>
