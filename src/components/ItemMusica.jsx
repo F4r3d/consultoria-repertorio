@@ -109,51 +109,50 @@ function ItemMusica({ id, titulo, autor, autores, url, mp3, letra, estilo, estil
   };
 
   return (
-    <div className="bg-slate-950 border-b border-slate-600 hover:bg-slate-900/50 transition-colors px-3 py-2.5">
-      <div className="grid grid-cols-[80px_250px_minmax(100px,180px)_140px_1fr] items-center gap-3">
+  <div className="bg-slate-950 border-b border-slate-600 hover:bg-slate-900/50 transition-colors px-3 py-3">
+    <div className="flex flex-col gap-2 md:grid md:grid-cols-[80px_250px_minmax(100px,180px)_140px_1fr] md:items-center md:gap-3 md:py-0">
 
-        {/* Coluna 1: Estilo */}
-        <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 ring-1 ring-amber-400/30 px-2.5 py-0.5 rounded-full text-center truncate">
-          {exibicaoEstilos}
-        </span>
+      {/* Estilo */}
+      <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 ring-1 ring-amber-400/30 px-2.5 py-0.5 rounded-full text-center truncate self-start md:self-auto">
+        {exibicaoEstilos}
+      </span>
 
-        {/* Coluna 2: Música */}
-        <span className="text-slate-100 text-sm font-medium truncate">
-          {titulo}
-        </span>
+      {/* Título */}
+      <span className="text-slate-100 text-sm font-medium truncate">
+        {titulo}
+      </span>
 
-        {/* Coluna 3: Autor */}
-        <span className="text-slate-200 text-xs truncate">
-          {exibicaoAutores}
-        </span>
+      {/* Autor */}
+      <span className="text-slate-200 text-xs truncate">
+        {exibicaoAutores}
+      </span>
 
-        {/* Coluna 4: Player */}
-        <div>
-          <div className="flex items-center gap-1.5">
-            <button
-              onClick={togglePlayPause}
-              className="w-8 h-8 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 flex items-center justify-center transition-colors"
-            >
-              {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 ml-0.5" />}
-            </button>
+      {/* Player */}
+      <div className="md:order-4">
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={togglePlayPause}
+            className="w-8 h-8 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 flex items-center justify-center transition-colors"
+          >
+            {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 ml-0.5" />}
+          </button>
 
-            <button
-              onClick={handleStop}
-              className="w-7 h-7 rounded-full text-slate-500 hover:text-amber-400 flex items-center justify-center transition-colors"
-            >
-              <Square className="w-3.5 h-3.5" />
-            </button>
+          <button
+            onClick={handleStop}
+            className="w-7 h-7 rounded-full text-slate-500 hover:text-amber-400 flex items-center justify-center transition-colors"
+          >
+            <Square className="w-3.5 h-3.5" />
+          </button>
 
-            <button
-              onClick={handleToggleLyrics}
-              className="w-7 h-7 rounded-full text-slate-500 hover:text-amber-400 flex items-center justify-center transition-colors"
-            >
-              <FileText className="w-3.5 h-3.5" />
-            </button>
-          </div>
+          <button
+            onClick={handleToggleLyrics}
+            className="w-7 h-7 rounded-full text-slate-500 hover:text-amber-400 flex items-center justify-center transition-colors"
+          >
+            <FileText className="w-3.5 h-3.5" />
+          </button>
 
           {isPlaying && (
-            <div className="flex items-center gap-1.5 mt-1.5">
+            <div className="flex items-center gap-1.5 flex-1 min-w-0">
               <span className="text-[10px] text-slate-500 tabular-nums shrink-0">
                 {formatarTempo(tempoAtual)}
               </span>
@@ -164,7 +163,7 @@ function ItemMusica({ id, titulo, autor, autores, url, mp3, letra, estilo, estil
                 value={tempoAtual}
                 ref={progressBarRef}
                 onChange={handleProgressoChange}
-                className="w-20 h-1 accent-amber-500 cursor-pointer"
+                className="flex-1 h-1 accent-amber-500 cursor-pointer"
               />
               <span className="text-[10px] text-slate-500 tabular-nums shrink-0">
                 {duracao > 0 ? formatarTempo(duracao) : '0:00'}
@@ -172,30 +171,31 @@ function ItemMusica({ id, titulo, autor, autores, url, mp3, letra, estilo, estil
             </div>
           )}
         </div>
-
-        {/* Coluna 5: Tema */}
-        <span className="text-slate-200 text-xs truncate">
-          {tema || 'N/A'}
-        </span>
       </div>
 
-      <audio
-        ref={audioRef}
-        src={urlAudio}
-        onTimeUpdate={handleTimeUpdate}
-        onLoadedMetadata={handleLoadedMetadata}
-        onEnded={handleStop}
-      />
-
-      {showLyrics && (
-        <ModalLetra
-          titulo={titulo}
-          conteudo={letraConteudo}
-          onClose={handleToggleLyrics}
-        />
-      )}
+      {/* Tema */}
+      <span className="text-slate-200 text-xs truncate">
+        {tema || 'N/A'}
+      </span>
     </div>
-  );
+
+    <audio
+      ref={audioRef}
+      src={urlAudio}
+      onTimeUpdate={handleTimeUpdate}
+      onLoadedMetadata={handleLoadedMetadata}
+      onEnded={handleStop}
+    />
+
+    {showLyrics && (
+      <ModalLetra
+        titulo={titulo}
+        conteudo={letraConteudo}
+        onClose={handleToggleLyrics}
+      />
+    )}
+  </div>
+);
 }
 
 export default ItemMusica;
